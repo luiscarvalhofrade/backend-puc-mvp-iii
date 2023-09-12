@@ -1,4 +1,3 @@
-#import dependecies
 import datetime
 
 from sqlalchemy import (
@@ -55,6 +54,10 @@ class QuestionDetail(Declarativebase):
     )
     question = relationship(Question, backref="question_details")
     answer = Column(String(600))
-    subejct = Column(String(100))
+    subject_id = Column(
+        Integer,
+        Foreignkey("subjects.id", name="fk_subject"),
+        nullable=False
+    )
     topic = Column(String(100))
 
